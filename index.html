@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>Intégrer une flashcard de MathALÉA à une page web</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body style="text-align: center;">
+  <br>
+  <form>
+    <h3 for="url" style="display:inline;">Lien de l'exercice de <a href="https://coopmaths.fr/mathalea.html?" target="_blank" rel="noopener noreferrer">MathALÉA</a> :</h3>
+    <input type="text" id="url" name="url" style="margin-bottom: 10px;">
+    <br>
+    <h4 for="hauteur" style="display:inline">Hauteur (en pixels) :</h4>
+    <input type="text" id="hauteur" name="hauteur" style="margin-bottom: 10px;" placeholder="400">
+    <br>
+    <h4 for="largeur" style="display:inline">Largeur (en pixels) :</h4>
+    <input type="text" id="largeur" name="largeur" placeholder="600">
+  </form>
+  <br>
+  <div>Remarque : la hauteur sera ajustée à l'affichage de l'exercice mais la largeur ne changera pas.</div>
+  <br>
+  <button onclick="creerCodesIntegration()" style="padding: 10px;font-size:medium">Générer les codes d'intégration</button>
+  <br>
+  <br>
+  <div>
+    <h3 style="display: inline-block;">Code d'intégration de la question (recto)</h2> <img src="copy.svg" width="20px" onclick="copier('recto')"/>
+      <span id="rectoConfirmationCopie" style="visibility: hidden">Copié !</span>
+      <br>
+      <textarea rows="8" cols="50" id="recto" readonly></textarea>
+  </div>
+  <br>
+  <div>
+    <h3 style="display: inline-block;">Code d'intégration de la réponse (verso)</h2> <img src="copy.svg" width="20px" onclick="copier('verso')"/>
+      <span id="versoConfirmationCopie" style="visibility: hidden">Copié !</span>
+      <br>
+      <textarea rows="8" cols="50" id="verso" readonly></textarea>
+  </div>
+</body>
+</html>
+
+<script>
+  function copier(rectoOuVerso) {
+    const text = document.getElementById(rectoOuVerso)
+    const confirmation = document.getElementById(rectoOuVerso + 'ConfirmationCopie')
+    text.select();
+    document.execCommand("copy");
+    confirmation.style.visibility = ''
+    setTimeout(function(){
+    confirmation.style.visibility = 'hidden'
+    }, 2000);
+}
+  function creerCodesIntegration () {
+    const recto = document.getElementById('recto')
+    const verso = document.getElementById('verso')
+    const url = document.getElementById('url').value
+    let hauteur = document.getElementById('hauteur').value
+    let largeur = document.getElementById('largeur').value
+    if (hauteur.length === 0) hauteur = '400'
+    if (largeur.length === 0) largeur = '600'
+    recto.value = `<script> var url="${url}", hauteur=${hauteur}, largeur=${largeur}; <\/script>
+    <div class='chargement'>Chargement <img src='https://gvalmont.github.io/mathalea-flashcards/orange-spinner.svg'/></div>
+    <div id='valQuestion' style='visibility: hidden;'> Question - Erreur Javascript </div>
+    <script src="https://gvalmont.github.io/mathalea-flashcards/script.js"><\/script>`
+    verso.value = `<script> var url="${url}", hauteur=${hauteur}, largeur=${largeur}; <\/script>
+    <div class='chargement'>Chargement <img src='https://gvalmont.github.io/mathalea-flashcards/orange-spinner.svg'/></div>
+    <div id='valReponse' style='visibility: hidden;'> Réponse - Erreur Javascript </div>
+    <script src="https://gvalmont.github.io/mathalea-flashcards/script.js"><\/script>`
+  }
+</script>

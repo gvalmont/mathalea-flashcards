@@ -44,16 +44,10 @@ if (divListenerExistant === null) {
   const divListener = document.createElement('div')
   divListener.id = 'postMessageListener'
   document.body.appendChild(divListener)
-  window.addEventListener('message', (event) => {
-    let hauteur
-    event.data.hauteur === undefined ? hauteur = '200' : hauteur = event.data.hauteur
-    const rectoFrame = document.getElementById('rectoFrame')
-    const versoFrame = document.getElementById('versoFrame')
+  window.addEventListener('message', () => {
     const valQuestion = document.getElementById('valQuestion')
     const valReponse = document.getElementById('valReponse')
     const chargements = document.getElementsByClassName('chargement')
-    if (rectoFrame !== null) rectoFrame.style.height = hauteur + 'px';
-    if (versoFrame !== null) versoFrame.style.height = hauteur + 'px';
     if (valQuestion !== null) valQuestion.style.visibility = 'visible';
     if (valReponse !== null) valReponse.style.visibility = 'visible';
     for (const chargement of chargements) {

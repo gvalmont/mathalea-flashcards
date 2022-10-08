@@ -38,6 +38,23 @@ function remplace(tag, nouvelleValeur) {
   url = debut + nouvelleValeur + fin;
 }
 
+function retourner () {
+  const boutonRetourner = document.getElementById('boutonRetourner')
+  const flipCard = document.getElementById('flip-card')
+  const flipCardInner = document.getElementById('flip-card-inner')
+  const flipCardBack = document.getElementById('flip-card-back')
+  if (flipCard.style.transform === 'rotateX(180deg)') {
+    flipCard.style.transform = ''
+    flipCardInner.style.transform = ''
+    flipCardBack.style.transform = ''
+    boutonRetourner.innerText = 'Voir la réponse'
+  } else {
+    flipCard.style.transform = 'rotateX(180deg)'
+    flipCardInner.style.transform = 'rotateX(180deg)'
+    boutonRetourner.innerText = 'Voir la question'
+  }
+}
+
 // Ajoute un listener pour mettre à jour l'affichage lorsque l'exercice est chargé
 var divListenerExistant = document.getElementById('postMessageListener')
 if (divListenerExistant === null) {
@@ -48,8 +65,16 @@ if (divListenerExistant === null) {
     const valQuestion = document.getElementById('valQuestion')
     const valReponse = document.getElementById('valReponse')
     const chargements = document.getElementsByClassName('chargement')
-    if (valQuestion !== null) valQuestion.style.visibility = 'visible';
-    if (valReponse !== null) valReponse.style.visibility = 'visible';
+    const boutonRetourner = document.getElementById('boutonRetourner')
+    const flipCard = document.getElementById('flip-card')
+    if (valQuestion !== null) valQuestion.style.display = 'block';
+    if (valReponse !== null) valReponse.style.display = 'block';
+    if (boutonRetourner !== null) boutonRetourner.style.display = 'block'
+    if (flipCard !== null) {
+      flipCard.style.width = largeur
+      flipCard.style.height = hauteur
+      flipCard.style.display = 'block'
+    }
     for (const chargement of chargements) {
       chargement.style.display = 'none';
     }

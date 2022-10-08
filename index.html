@@ -65,19 +65,19 @@
     if (hauteur.length === 0) hauteur = '400'
     if (largeur.length === 0) largeur = '600'
     recto.value = `<script> var url="${url}", hauteur=${hauteur}, largeur=${largeur}; <\/script>
-      <div style="width:${largeur}; height:${hauteur}>
+      <div style="width:${largeur}px; height:${hauteur}px; overflow:hidden">
         <div class='chargement' style='text-align: center'><br><img src='https://gvalmont.github.io/mathalea-flashcards/orange-spinner.svg'/></div>
         <div id='valQuestion' style='display: none;'> Question - Erreur Javascript </div>
       </div>
     <script src="https://gvalmont.github.io/mathalea-flashcards/script.js"><\/script>`
     verso.value = `<script> var url="${url}", hauteur=${hauteur}, largeur=${largeur}; <\/script>
-      <div style="width:${largeur}; height:${hauteur}>
+      <div style="width:${largeur}px; height:${hauteur}px; overflow:hidden">
         <div class='chargement' style='text-align: center'><br><img src='https://gvalmont.github.io/mathalea-flashcards/orange-spinner.svg'/></div>
         <div id='valReponse' style='display: none;'> Réponse - Erreur Javascript </div>
       </div>
     <script src="https://gvalmont.github.io/mathalea-flashcards/script.js"><\/script>`
     rectoVerso.value = `<script> var url="${url}", hauteur=${hauteur}, largeur=${largeur}; <\/script>
-      <div style="width:${largeur}; height:${hauteur}>
+      <div style="width:${largeur}px; height:${hauteur}px; overflow:hidden">
         <div class='chargement' style='text-align: center'><br><img src='https://gvalmont.github.io/mathalea-flashcards/orange-spinner.svg'/></div>
         <button id='boutonRetourner' style='display: none;' onclick='retourner()'>Voir la réponse</button>
         <div id="flip-card" style="display:none">

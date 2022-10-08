@@ -57,7 +57,7 @@ if (divListenerExistant === null) {
     if (valQuestion !== null) valQuestion.style.visibility = 'visible';
     if (valReponse !== null) valReponse.style.visibility = 'visible';
     for (const chargement of chargements) {
-      chargement.style.visibility = 'hidden';
+      chargement.style.display = 'none';
     }
   });
 }

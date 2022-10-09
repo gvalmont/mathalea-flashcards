@@ -40,17 +40,15 @@ function remplace(tag, nouvelleValeur) {
 
 function retourner () {
   const boutonRetourner = document.getElementById('boutonRetourner')
-  const flipCard = document.getElementById('flip-card')
-  const flipCardInner = document.getElementById('flip-card-inner')
+  const flipCardFront = document.getElementById('flip-card-front')
   const flipCardBack = document.getElementById('flip-card-back')
-  if (flipCard.style.transform === 'rotateX(180deg)') {
-    flipCard.style.transform = ''
-    flipCardInner.style.transform = ''
-    flipCardBack.style.transform = ''
+  if (flipCardFront.style.transform === 'rotateX(180deg)') {
+    flipCardFront.style.transform = 'rotateX(0deg)'
+    flipCardBack.style.transform = 'rotateX(-180deg)'
     boutonRetourner.innerText = 'Voir la réponse'
   } else {
-    flipCard.style.transform = 'rotateX(180deg)'
-    flipCardInner.style.transform = 'rotateX(180deg)'
+    flipCardFront.style.transform = 'rotateX(180deg)'
+    flipCardBack.style.transform = 'rotateX(0deg)'
     boutonRetourner.innerText = 'Voir la question'
   }
 }
